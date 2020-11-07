@@ -9,14 +9,15 @@ ResourceManager(Resource obiekt){
     w = new obiekt;
 }
 
-~ResourceManager(){
+~ResourceManager()
+{
     cout<<"The cleaning service!!"<<endl;
     delete w;
 }
 
 double get() { return k.get(); } // metoda double get()
 
-ResourceManager(const ResourceManager& a): w{a.w}, { } // konstruktor kopiujacy
+ResourceManager(const ResourceManager& a): w{a.w} { } // konstruktor kopiujacy
 
 ResourceManager& operator=(const ResourceManager& t) // operator przypisania
 {
@@ -25,12 +26,9 @@ ResourceManager& operator=(const ResourceManager& t) // operator przypisania
         return *this;
 }
 
-ResourceManager(ResourceManager && a) // Move constructor
-{
-        w = a.w;
-        a.w = nullptr;
-        a.dlugosc = 0;
-        a.pojemnosc = 0;
+ResourceManager(ResourceManager && other): w(other.w) // Move constructor
+
+        other.w = 0;
 }
 
 ResourceManager& operator=(ResourceManager&& other) // move operator
@@ -41,7 +39,7 @@ ResourceManager& operator=(ResourceManager&& other) // move operator
         }
         delete w;
         w= other.w;
-        other.w = nullptr;
+        other.w = 0;
         return *this;
     }
 
