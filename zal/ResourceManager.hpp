@@ -21,12 +21,15 @@ ResourceManager(const ResourceManager& a): w{a.w} { } // konstruktor kopiujacy
 
 ResourceManager& operator=(const ResourceManager& t) // operator przypisania
 {
+    if (this != &t)
+    {
         delete w;
         w = t.w;
+    }
         return *this;
 }
 
-ResourceManager(ResourceManager && other): w(other.w) // Move constructor
+ResourceManager(ResourceManager && other): w(other.w){ // Move constructor
 
         other.w = 0;
 }
@@ -36,10 +39,11 @@ ResourceManager& operator=(ResourceManager&& other) // move operator
         if (this != &other)
         {
             cout<<"You try to assign the object to itself"<<endl;
-        }
         delete w;
         w= other.w;
         other.w = 0;
+        }
+
         return *this;
     }
 
