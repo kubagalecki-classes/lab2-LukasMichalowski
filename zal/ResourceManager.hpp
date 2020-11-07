@@ -4,5 +4,8 @@
 
 class ResourceManager
 {
-    // Twoja implementacja tutaj
+public:
+ResourceManager() {};
+private:
+Resource k;
 };
