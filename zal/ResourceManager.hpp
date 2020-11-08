@@ -8,7 +8,7 @@ class ResourceManager
 public:
 ResourceManager()
 {
-    w = new Resource;
+  
 }
 
 ~ResourceManager()
@@ -48,5 +48,5 @@ ResourceManager& operator=(ResourceManager&& other) // move operator
 
 
 private:
-Resource *w;
+Resource w;
 };
