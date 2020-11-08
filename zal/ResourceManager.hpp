@@ -20,7 +20,7 @@ double get() { return w->get(); } // metoda double get()
 
 ResourceManager(const ResourceManager & a) : w(a.w)
 {
-
+a.w = nullptr;
 } // konstruktor kopiujacy
 
 ResourceManager& operator=(const ResourceManager & t) // operator przypisania
