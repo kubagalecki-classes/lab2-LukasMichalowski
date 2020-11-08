@@ -22,7 +22,7 @@ ResourceManager(const ResourceManager & a)
 {
     w = new Resource;
     *w=*a.w;
-} // konstruktor kopiujacy
+} //  deep copy constructor
 
 ResourceManager& operator=(const ResourceManager & t) // operator przypisania
 {
@@ -40,10 +40,12 @@ ResourceManager(ResourceManager && other) // Move constructor
 
 ResourceManager& operator=(ResourceManager&& other) // move operator
     {
-
-        w = other.w;
-        other.w = nullptr;
+    if (&other == this)
         return *this;
+    delete w;
+    w=other.w;
+    other.w = nullptr;
+    return *this
     }
 
 
