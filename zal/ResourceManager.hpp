@@ -38,6 +38,7 @@ ResourceManager(ResourceManager && other) // Move constructor
 }
 
 
+
 ResourceManager& operator=(ResourceManager&& other) // move operator
     {
     if (&other == this)
