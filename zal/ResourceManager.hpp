@@ -34,7 +34,7 @@ ResourceManager& operator=(const ResourceManager & t) // operator przypisania
 ResourceManager(ResourceManager && other) // Move constructor
 {
     *w = *other.w;
-    other.w = nullptr;
+    *other.w = nullptr;
 }
 
 
@@ -42,7 +42,7 @@ ResourceManager& operator=(ResourceManager&& other) // move operator
     {
 
         *w = *other.w;
-        other.w = nullptr;
+        *other.w = nullptr;
         return *this;
     }
 
