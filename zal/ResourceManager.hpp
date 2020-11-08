@@ -6,7 +6,7 @@ class ResourceManager
 {
 public:
 ResourceManager(Resource obiekt){
-    w = new obiekt;
+    w = new Resource obiekt;
 }
 
 ~ResourceManager()
@@ -17,16 +17,18 @@ ResourceManager(Resource obiekt){
 
 double get() { return k.get(); } // metoda double get()
 
-ResourceManager(const ResourceManager& a): w{a.w} { } // konstruktor kopiujacy
-
-ResourceManager& operator=(const ResourceManager& t) // operator przypisania
+ResourceManager(const ResourceManager & a)
 {
-    if (this != &t)
-    {
-        delete w;
-        w = t.w;
-    }
-        return *this;
+    w = new a.w;
+
+} // konstruktor kopiujacy
+
+ResourceManager& operator=(const ResourceManager & t) // operator przypisania
+{
+    if (this == &t) {return *this;}
+    delete w;
+    w = t.w;
+    return *this;
 }
 
 ResourceManager(ResourceManager && other): w(other.w){ // Move constructor
