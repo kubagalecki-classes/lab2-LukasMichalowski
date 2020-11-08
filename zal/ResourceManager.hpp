@@ -5,8 +5,9 @@
 class ResourceManager
 {
 public:
-ResourceManager(Resource obiekt){
-    w = new Resource obiekt;
+ResourceManager()
+{
+    w = new Resource;
 }
 
 ~ResourceManager()
