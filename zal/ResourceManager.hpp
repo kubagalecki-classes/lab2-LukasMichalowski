@@ -2,6 +2,9 @@
 
 #include "Resource.hpp"
 
+usingnamespace std;
+
+
 class ResourceManager
 {
 public:
@@ -16,37 +19,34 @@ ResourceManager()
     delete w;
 }
 
-double get() { return k.get(); } // metoda double get()
+double get() { return w.get(); } // metoda double get()
 
-ResourceManager(const ResourceManager & a)
+ResourceManager(const ResourceManager & a) : w(a.w)
 {
-    w = new a.w;
+   a.w = nullptr; // check
 
 } // konstruktor kopiujacy
 
 ResourceManager& operator=(const ResourceManager & t) // operator przypisania
 {
-    if (this == &t) {return *this;}
-    delete w;
-    w = t.w;
+    if(this!= &t)
+        w=t.w;
+    t.w = nullptr; // check
     return *this;
 }
 
-ResourceManager(ResourceManager && other): w(other.w){ // Move constructor
-
-        other.w = 0;
+ResourceManager(ResourceManager && other) // Move constructor
+{
+    w = other.w;
+    other.w = nullptr;
 }
+
 
 ResourceManager& operator=(ResourceManager&& other) // move operator
     {
-        if (this != &other)
-        {
-            cout<<"You try to assign the object to itself"<<endl;
-        delete w;
-        w= other.w;
-        other.w = 0;
-        }
 
+        w = other.w;
+        other.w = nullptr;
         return *this;
     }
 
