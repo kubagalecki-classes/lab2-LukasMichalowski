@@ -2,7 +2,7 @@
 
 #include "Resource.hpp"
 
-usingnamespace std;
+using namespace std;
 
 
 class ResourceManager
@@ -19,11 +19,10 @@ ResourceManager()
     delete w;
 }
 
-double get() { return w.get(); } // metoda double get()
+double get() { return & w.get(); } // metoda double get()
 
 ResourceManager(const ResourceManager & a) : w(a.w)
 {
-   a.w = nullptr; // check
 
 } // konstruktor kopiujacy
 
@@ -31,7 +30,6 @@ ResourceManager& operator=(const ResourceManager & t) // operator przypisania
 {
     if(this!= &t)
         w=t.w;
-    t.w = nullptr; // check
     return *this;
 }
 
