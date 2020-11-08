@@ -40,7 +40,7 @@ ResourceManager(ResourceManager && other) // Move constructor
 
 ResourceManager& operator=(ResourceManager&& other) // move operator
     {
-        if(&operator == this)
+        if(&other == this)
             return *this;
         delete w;
         w = other.w;
