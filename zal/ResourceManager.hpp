@@ -18,14 +18,16 @@ ResourceManager()
 
 double get() { return w->get(); } // metoda double get()
 
-ResourceManager(const ResourceManager & a) : w(a.w)
+ResourceManager(const ResourceManager & a)
 {
+    w = new Resource;
+    *w=*t.w;
 } // konstruktor kopiujacy
 
 ResourceManager& operator=(const ResourceManager & t) // operator przypisania
 {
     if(this!= &t)
-        w=t.w;
+        *w=*t.w;
     return *this;
 }
 
