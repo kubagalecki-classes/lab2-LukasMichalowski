@@ -8,7 +8,7 @@ class ResourceManager
 public:
 ResourceManager()
 {
-  
+    w = new Resource;
 }
 
 ~ResourceManager()
@@ -16,7 +16,7 @@ ResourceManager()
     delete w;
 }
 
-double get() { return w.get(); } // metoda double get()
+double get() { return *w.get(); } // metoda double get()
 
 ResourceManager(const ResourceManager & a) : w(a.w)
 {
@@ -48,5 +48,5 @@ ResourceManager& operator=(ResourceManager&& other) // move operator
 
 
 private:
-Resource w;
+Resource *w;
 };
