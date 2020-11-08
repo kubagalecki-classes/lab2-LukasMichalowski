@@ -16,7 +16,7 @@ ResourceManager()
     delete w;
 }
 
-double get() { return *w.get(); } // metoda double get()
+double get() { return w->get(); } // metoda double get()
 
 ResourceManager(const ResourceManager & a) : w(a.w)
 {
